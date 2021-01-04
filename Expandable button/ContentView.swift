@@ -8,9 +8,37 @@
 import SwiftUI
 
 struct ContentView: View {
+    
+    @State private var showAlert = false
+    
     var body: some View {
-        Text("Expandable Button")
-            .padding()
+        NavigationView{
+            ZStack {
+                List(1...10, id: \.self) { i in
+                    Text("Row \(i)")
+                }
+                VStack {
+                    Spacer()
+                    HStack {
+                        Spacer()
+                        ExpandableButtonPanel(primaryButton: ExpandableButtonItem(label: Image(systemName: "ellipsis")), secondaryButtons: [
+                                                ExpandableButtonItem(label: Image(systemName: "photo")){
+                                                    self.showAlert.toggle()
+                                                },
+                                                ExpandableButtonItem(label: Image(systemName: "camera")){
+                                                    self.showAlert.toggle()
+                                                },
+                        ])
+                    }
+                }
+                .padding()
+                .alert(isPresented: $showAlert, content: {
+                    Alert(title: Text("Test"))
+                })
+            }
+            .navigationTitle("Demo")
+            .listStyle(PlainListStyle())
+        }
     }
 }
 
@@ -45,11 +73,18 @@ struct ExpandableButtonPanel: View {
                 }
             }
             Button(action: {
+                withAnimation {
+                    isExpanded.toggle()
+                }
                 self.primaryButton.action?()
             }, label: {
                 self.primaryButton.label
             })
+            .frame(width: self.size, height: self.size)
         }
+        .background(Color.white)
+        .cornerRadius(cornerRadius)
+        .shadow(radius: 5)
     }
 }
 
