@@ -11,7 +11,7 @@ import SwiftUI
 struct Expandable_buttonApp: App {
     var body: some Scene {
         WindowGroup {
-            Test()
+            ContentView()
         }
     }
 }
