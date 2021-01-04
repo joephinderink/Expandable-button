@@ -48,7 +48,6 @@ struct Test: View {
                     .shadow(radius: 10)
                 }
                 .frame(width: 65)
-                .padding()
             }
             .navigationTitle("Demo")
             .listStyle(PlainListStyle())
