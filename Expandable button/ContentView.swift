@@ -17,7 +17,7 @@ struct ContentView: View {
                 List(1...10, id: \.self) { i in
                     Text("Row \(i)")
                 }
-                VStack {
+                VStack 
                     Spacer()
                     HStack {
                         Spacer()
