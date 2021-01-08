@@ -23,7 +23,7 @@ struct ContentView: View {
                         Spacer()
                         if isExpanded {
                             Button(action: /*@START_MENU_TOKEN@*/{}/*@END_MENU_TOKEN@*/, label: {
-                                Image(systemName: "poto")
+                                Image(systemName: "photo")
                             })
                             .padding()
                         }
