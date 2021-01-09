@@ -15,7 +15,7 @@ struct ContentView: View {
         NavigationView{
             ZStack {
                 List(1...10, id: \.self) { i in
-                    Text("Ro \(i)")
+                    Text("Row \(i)")
                 }
                 VStack {
                     Spacer()
