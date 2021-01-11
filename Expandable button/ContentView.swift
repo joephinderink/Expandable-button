@@ -1,57 +1,41 @@
 //
 //  ContentView.swift
-//  Expandable button
+//  TestButton
 //
-//  Created by Joep Hinderink on 04/01/2021.
+//  Created by Joep Hinderink on 11/01/2021.
 //
 
 import SwiftUI
 
 struct ContentView: View {
     
-    @State private var isExpanded = false
+    @State var isExpanded = false
     
     var body: some View {
-        NavigationView{
-            ZStack {
-                List(1...10, id: \.self) { i in
-                    Text("Row \(i)")
+        VStack {
+            Button (action: {
+                withAnimation {
+                    isExpanded.toggle()
                 }
-                VStack {
-                    Spacer()
-                    HStack {
-                        Spacer()
-                        if isExpanded {
-                            Button(action: /*@START_MENU_TOKEN@*/{}/*@END_MENU_TOKEN@*/, label: {
-                                Image(systemName: "photo")
-                            })
-                            .padding()
-                        }
-                        Button(action: {
-                            withAnimation {
-                                isExpanded.toggle()
-                            }
-                        }, label: {
-                            Image(systemName: "ellipsis")
-                                .frame(width: 50, height: 65)
-                        })
-                        Spacer()
-                        if isExpanded {
-                            Button(action: /*@START_MENU_TOKEN@*/{}/*@END_MENU_TOKEN@*/, label: {
-                                Image(systemName: "camera")
-                            })
-                            .padding()
-                        }
-                    }
-                    .background(Color.white)
-                    .cornerRadius(50)
-                    .shadow(radius: 10)
-                }
-                .frame(width: 65)
+            }, label: {
+                Image(systemName: "house")
+                    .frame(width: 65, height: 65)
+            })
+            if isExpanded {
+                Button (action: /*@START_MENU_TOKEN@*/{}/*@END_MENU_TOKEN@*/, label: {
+                    Image(systemName: "house")
+                        .frame(width: 65, height: 65)
+                })
             }
-            .navigationTitle("Demo")
-            .listStyle(PlainListStyle())
+            if isExpanded {
+                Button (action: /*@START_MENU_TOKEN@*/{}/*@END_MENU_TOKEN@*/, label: {
+                    Image(systemName: "house")
+                        .frame(width: 65, height: 65)
+                })
+            }
         }
+        .background(Color.black)
+        .cornerRadius(50)
     }
 }
 
